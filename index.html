@@ -50,6 +50,7 @@
 		}
 		body {
 			margin: 0;
+			background: linear-gradient(0deg, white 0%, aliceblue 60%);
 		}
 		.header {
 			position: fixed;
@@ -98,9 +99,22 @@
 		}
 		.container {
 			display: flex;
+			align-items: stretch;
 			justify-content: space-between;
-			gap: 17px;
+			gap: 6px;
 			padding: 10px;
+		}
+		.item {
+			display: block;
+			padding: 6px;
+			border: 1px lightgray solid;
+			border-radius: 10px;
+			flex: 1 1 0px;
+			flex-basis: 0;
+			box-shadow: 3px 3px 10px rgb(0, 0, 0, .1);
+		}
+		.item:hover {
+			box-shadow: 3px 3px 10px rgb(0, 0, 0, .2);
 		}
 	</style>
 </head>
