@@ -1,191 +1,330 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<style>
-		.fancy-button {
-			text-decoration: none;
-			font-family: fantasy;
-			font-size: 19px;
-			padding: 4px 15px;
-			border-radius: 7px;
-			border: solid white 1px;
-			color: white;
-			/*background-color: #fff23b;*/
-			background-color: transparent;
-			position: relative;
-			cursor: pointer;
-			user-select: none;
-		}
-		.fancy-button:focus-visible {
-			border: dashed 3px black;
-		}
-		.fancy-button.animated {
-			background-repeat: no-repeat;
-			background-size: 0;
-			background-position: 50% 50%;
-			background-origin: padding-box;
-			background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"><defs><linearGradient id="lightLinear" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="white"></stop><stop offset="50%" stop-color="%23cfe0ff"></stop><stop offset="100%" stop-color="%238bb8ff"></stop></linearGradient></defs><circle r=".5" cx=".5" cy=".5" fill="url(%23lightLinear)" /></svg>');
-			background-blend-mode: multiply;
-			transition: .4s background-size cubic-bezier(0.19, 1, 0.22, 1), .2s color linear, .25s border-color linear;
-		}
-		.fancy-button.plain {
-			background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"><circle r=".5" cx=".5" cy=".5" fill="white" /></svg>');
-		}
-		.fancy-button.big {
-			padding: 14px 46px;
-			font-size: 36px;
-			border-radius: 26px;
-		}
-		.fancy-button:active {
-			background-color: #ff9090;
-			top: 1px;
-		}
-		.fancy-button:hover, .fancy-button:active {
-			background-size: calc(100% + 10px);
-			color: black;
-			border-color: transparent;
-		}
-		body {
-			margin: 0;
-			background: linear-gradient(0deg, white 0%, aliceblue 60%);
-		}
-		.header {
-			position: fixed;
-			width: calc(100% - 30px);
-			padding: 10px 15px;
-			background: #757575;
-			color: white;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			flex-direction: row;
-			box-shadow: 0px 0.1px 6px black;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curs Dezvoltare Jocuri Python | Fii Creator!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Resetări de bază */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-		.page {
-			font-family: sans-serif;
-		}
-		.fancy-bg {
-			text-align: center;
-			padding: 130px 12px;
-			padding-top: 150px;
-			animation: bg-morph 1s linear infinite alternate;
-			background: linear-gradient(135deg, #1f3459 0%, #3b69b2 75%, #3b82f6 100%);
-			background-size: 400% 400%;
-			animation: gradient 10s linear infinite;
-			color: white;
-		}
-		.fancy-bg p {
-			font-size: 1.3em;
-		}
-		@keyframes gradient {
-			0% {
-				background-position: 50% 0%;
-			}
-			25% {
-				background-position: 50% 50%;
-			}
-			50% {
-				background-position: 0% 50%;
-			}
-			75% {
-				background-position: 0% 0%;
-			}
-			100% {
-				background-position: 50% 0%;
-			}
-		}
-		.container {
-			display: flex;
-			align-items: stretch;
-			justify-content: space-between;
-			gap: 6px;
-			padding: 10px;
-		}
-		.item {
-			display: block;
-			padding: 6px;
-			border: 1px lightgray solid;
-			border-radius: 10px;
-			flex: 1 1 0px;
-			flex-basis: 0;
-			box-shadow: 3px 3px 10px rgb(0, 0, 0, .1);
-		}
-		.item:hover {
-			box-shadow: 3px 3px 10px rgb(0, 0, 0, .2);
-		}
-	</style>
+
+        /* Stilul general al paginii - Tematică Dark/Futuristic */
+        body {
+            background-color: #0d0e15;
+            background-image: radial-gradient(circle at top right, #1a0b2e, #0d0e15 70%);
+            color: #e0e6ed;
+            font-family: 'Exo 2', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* Container central pentru a limita lățimea pe ecrane mari */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Titluri cu font de gaming și efect de Neon */
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #00f3ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-top: 20px;
+            color: #ff00ff; /* Neon Pink pentru titlul principal */
+            text-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #00f3ff;
+            box-shadow: 0 10px 30px -10px rgba(0, 243, 255, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #a0aec0;
+            margin-bottom: 20px;
+        }
+
+        .authors {
+            font-size: 0.9rem;
+            color: #39ff14; /* Neon Green */
+        }
+
+        /* Stil pentru secțiuni - Efect de Glassmorphism (sticlă) */
+        section {
+            background: rgba(20, 22, 34, 0.7);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 243, 255, 0.15);
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        strong {
+            color: #00f3ff;
+        }
+
+        /* Liste stilizate */
+        ul {
+            list-style: none;
+            padding-left: 10px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        ul li::before {
+            content: "▹";
+            color: #ff00ff;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Stil pentru formulare */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: #39ff14;
+        }
+
+        input, textarea {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #4a5568;
+            border-radius: 5px;
+            padding: 12px;
+            color: #fff;
+            font-family: 'Exo 2', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #00f3ff;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+        }
+
+        /* Butoane futuriste */
+        button {
+            background: transparent;
+            color: #00f3ff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            padding: 15px 30px;
+            border: 2px solid #00f3ff;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #00f3ff;
+            color: #000;
+            box-shadow: 0 0 20px #00f3ff;
+        }
+
+        /* Culoare diferită pentru butonul de feedback */
+        .btn-feedback {
+            border-color: #ff00ff;
+            color: #ff00ff;
+        }
+
+        .btn-feedback:hover {
+            background: #ff00ff;
+            color: #000;
+            box-shadow: 0 0 20px #ff00ff;
+        }
+
+        .highlight-box {
+            background: rgba(57, 255, 20, 0.05);
+            border-left: 4px solid #39ff14;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+    </style>
 </head>
+
 <body>
-	<header class="header">
-		<a style="cursor:pointer;"><svg width="74.02" height="42.03" version="1.1" viewBox="0 0 74.02 42.03" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><linearGradient id="linearGradient1475" x1="150.96" x2="112.03" y1="192.35" y2="137.27" gradientTransform="matrix(.2162 0 0 .20784 26.29 43.62)" gradientUnits="userSpaceOnUse"><stop stop-color="#ffd43b" offset="0"/><stop stop-color="#ffe873" offset="1"/></linearGradient><linearGradient id="linearGradient1478" x1="26.649" x2="135.67" y1="20.604" y2="114.4" gradientTransform="matrix(.2162 0 0 .20784 26.29 43.62)" gradientUnits="userSpaceOnUse"><stop stop-color="#5a9fd4" offset="0"/><stop stop-color="#306998" offset="1"/></linearGradient></defs><!-- Background (optional) --><!-- Icon: stylized game controller + Python-ish colors --><g transform="translate(22.421 9.803)"><g stroke-width="2"><!-- Controller body --><rect x="-21.421" y="-8.803" width="72" height="40" rx="18" fill="#111827" stroke="#38bdf8"/><!-- Left grip highlight --><path d="m-15.421 1.197c-2 8-2 12 0 20 2 4 6 8 12 8" fill="none" stroke="#22c55e" stroke-linecap="round"/><!-- Right grip highlight --><path d="m44.579 1.197c2 8 2 12 0 20-2 4-6 8-12 8" fill="none" stroke="#facc15" stroke-linecap="round"/><!-- D-pad --><!-- Buttons --></g><g transform="translate(23.928 2.7483)"><circle cx=".050443" cy="8.4179" r="3" fill="#f97316"/><circle cx="6.7879" cy="1.9108" r="3" fill="#22c55e"/><circle cx="6.7879" cy="14.904" r="3" fill="#38bdf8"/><circle cx="13.412" cy="8.4179" r="3" fill="#facc15"/><g transform="matrix(.59411 0 0 .62628 -54.666 -33.84)" stroke-width=".37502"><path d="m53.159 47.903c-1.7617 0.0078-3.444 0.15085-4.9243 0.40024-4.3608 0.73352-5.1525 2.2688-5.1525 5.1003v3.7394h10.305v1.2465h-14.172c-2.9949 0-5.6174 1.7139-6.4376 4.9745-0.94617 3.7373-0.98813 6.0694 0 9.9718 0.73252 2.9048 2.4819 4.9745 5.4768 4.9745h3.5431v-4.4827c0-3.2385 2.9429-6.0951 6.4376-6.0951h10.293c2.8652 0 5.1525-2.2462 5.1525-4.9859v-9.3428c0-2.659-2.356-4.6565-5.1525-5.1003-1.7702-0.28057-3.607-0.40804-5.3687-0.40024zm-5.5729 3.0075c1.0644 0 1.9337 0.84116 1.9337 1.8754 0 1.0306-0.86925 1.864-1.9337 1.864-1.0683 0-1.9337-0.83339-1.9337-1.864 0-1.0343 0.86544-1.8754 1.9337-1.8754z" fill="url(#linearGradient1478)"/><path d="m64.965 58.389v4.3569c0 3.3779-3.0078 6.2209-6.4376 6.2209h-10.293c-2.8194 0-5.1525 2.2975-5.1525 4.9859v9.3428c0 2.659 2.4285 4.223 5.1525 4.9859 3.262 0.91324 6.3901 1.0783 10.293 0 2.5943-0.71518 5.1525-2.1545 5.1525-4.9859v-3.7394h-10.293v-1.2465h15.445c2.9949 0 4.111-1.989 5.1525-4.9745 1.0759-3.0735 1.0301-6.0291 0-9.9718-0.74015-2.8387-2.1538-4.9745-5.1525-4.9745zm-5.7891 23.66c1.0683 5e-6 1.9337 0.83339 1.9337 1.864 0 1.0343-0.86544 1.8754-1.9337 1.8754-1.0644 0-1.9337-0.84116-1.9337-1.8754 1e-6 -1.0306 0.86925-1.864 1.9337-1.864z" fill="url(#linearGradient1475)"/></g></g><!-- Python-like dual curve --></g><!-- Text --></svg></a>
-		<span><button class="fancy-button plain animated">Înscrie-te</button></span>
-	</header>
-	<div class="page active">
-		<div class="fancy-bg">
-			<h1>Învață să-ți creezi propriul joc!</h1>
-			<p style="margin-bottom: 50px;">Curs de programare Python special creat pentru elevii de clasele V-VII.</p>
-			<button class="fancy-button animated big">Înscrie-te!</button>
-		</div>
-		<div style="margin-top: 16px;" class="container">
-			<span class="item">
-				<h3 class="font-bold text-xl mb-2">🎯 Scopul cursului</h3>
-				<p>De la prima linie de cod, până la lansarea propriului joc video în Python.</p>
-			</span>
-			<span class="item">
-				<h3 class="font-bold text-xl mb-2">📅 Perioada</h3>
-				<p>10 săptămâni în vacanța de vară. 1h 30min / săptămână.</p>
-			</span>
-			<span class="item">
-				<h3 class="font-bold text-xl mb-2">📍 Mod desfășurare</h3>
-				<p>Fizic (prioritar) + Online. Învățare interactivă.</p>
-			</span>
-		</div>
-		<table style="margin-top: 16px;">
-			<tr>
-				<th style="text-align: left;" colspan="2"><h2 style="padding-left: 10px;">Python pentru Exploratori Digitali: Primii Pași în Programare</h2></th>
-				<th></th>
-			</tr>
-			<tr>
-				<td style="text-align: center;vertical-align: middle;"><img src="data:image/jpeg;base64,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" alt="" height="200"></td>
-				<td width="50%"><p>Descoperă lumea fascinantă a programării prin Python, limbajul preferat al creatorilor de jocuri, aplicații și roboți! Acest curs interactiv îi ghidează pe elevii din clasele V–VIII să învețe prin joacă, proiecte practice și provocări creative, dezvoltându‑și logica, imaginația și încrederea în propriile abilități digitale.</p></td>
-			</tr>
-		</table>
-	</div>
 
-<pre>
-TODO: Perioada de desfășurare 
-10 saptamani - vacanta de vara
-Mod de desfășurare 
-- fizic+online(mai mult fizic)
-Planificarea activităților 
-Sapt 
-Saptamana1 - Inntroducere in Pyton
-Instalare soft
-Creare fisiere
-Baze in python
+<div class="container">
+    <header>
+        <h1>PYTHON GAME DEV: Initiază Aventura!</h1>
+        <p class="subtitle">
+            Nu mai fi doar un simplu jucător. Transformă-ți pasiunea într-o superputere și devino creatorul propriului tău univers digital!
+        </p>
+        <div class="authors">
+            <strong>Sistem dezvoltat de:</strong> Bartha Aron & Buhai Iulia Georgiana
+        </div>
+    </header>
 
-Saotmana2 -  Functii, loops , 
-Sapt3 - Pygame- introducere
-Sapt4 - pygame
-Sapt5 - Alegere proietc+ proiectare+ design
+    <section>
+        <h2>🎮 Despre ce este vorba?</h2>
+        <p>
+            Programarea este limbajul viitorului. Poate părea un cod secret greu de descifrat la început, dar noi am găsit „cheat code-ul” perfect: <strong>învățarea prin crearea de jocuri video!</strong>
+        </p>
+        <p>
+            În acest curs vei descoperi <strong>Python</strong>, unul dintre cele mai populare și puternice limbaje de programare din lume, folosit de la dezvoltarea de jocuri și inteligență artificială, până la securitate cibernetică. 
+        </p>
+        <p>
+            Vei lăsa teoria la o parte și vei scrie cod real pentru a da viață propriilor tale idei.
+        </p>
+    </section>
 
+    <section>
+        <h2>🎯 Misiunea Principală</h2>
+        <p>
+            Obiectivul final al acestui *quest* este să dezvolți de la zero un <strong>joc 100% funcțional în Python</strong>.
+        </p>
+        <p>
+            Timp de 10 săptămâni, vei învăța cum să construiești un proiect cap-coadă. Vei crea eroi, vei programa mișcările lor, vei seta legile fizicii din jocul tău, inamicii și tabela de scor. La final, vei avea propriul joc pe care să-l joci împreună cu prietenii tăi!
+        </p>
+    </section>
 
-pygame
-–
-–
-Sapt6 - exemple funny sec cibernetica in python
-QA, feedback , prezentare proiecte
-Modalități de evaluare a cursanților
- - proiecte 
-  Modalități de promovare a cursului 
-- social media/site
-Autoevaluarea cursului
-- măsuri de îmbunătățire propuse. 
-Formular feedback la final
-</pre>
+    <section>
+        <h2>👾 Profilul Jucătorului (Grup Țintă)</h2>
+        <div class="highlight-box">
+            <p><strong>Clasele V – VII</strong> | Pasionați de tehnologie, calculatoare și gaming.</p>
+        </div>
+        <p>
+            <strong>Nu ai mai scris niciodată cod? Perfect!</strong> Începem de la nivelul 1. Cursul este structurat inteligent, explicând totul pas cu pas, cu provocări interactive și distractive, perfect adaptate vârstei tale.
+        </p>
+    </section>
+
+    <section>
+        <h2>⏱️ Parametrii Misiunii</h2>
+        <ul>
+            <li><strong>Durata campaniei:</strong> 10 Săptămâni (în timpul vacanței de vară, fără stresul școlii).</li>
+            <li><strong>Sesiuni de antrenament:</strong> 1 oră și 30 de minute pe săptămână.</li>
+            <li><strong>Mod de desfășurare:</strong> Hibrid. Sesiuni fizice pentru lucru în echipă și ajutor rapid, plus resurse online pentru power-ups și recapitulare.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>🗺️ Harta Nivelurilor (Planificarea)</h2>
+        
+        <h3>Level 1: Accesarea Sistemului</h3>
+        <ul>
+            <li>Instalarea mediului de dezvoltare (Armura ta digitală)</li>
+            <li>Cum "gândește" un calculator – primele linii de cod</li>
+        </ul>
+
+        <h3>Level 2: Logica și Buclele</h3>
+        <ul>
+            <li>Automatizarea sarcinilor și repetarea acțiunilor</li>
+            <li>Crearea de mini-programe text-based</li>
+        </ul>
+
+        <h3>Level 3 & 4: Motorul Grafic (Pygame)</h3>
+        <ul>
+            <li>Trecerea de la text la grafică folosind Pygame</li>
+            <li>Desenarea mediului, mișcarea personajelor și controlul din tastatură</li>
+            <li>Detecția coliziunilor (cum facem ca jucătorul să nu treacă prin pereți)</li>
+        </ul>
+
+        <h3>Level 5: Alegerea Destinului</h3>
+        <ul>
+            <li>Brainstorming: Ce joc vrei să creezi? (Arcade, Platformer, Puzzle?)</li>
+            <li>Schitarea regulilor și a planului de bătaie</li>
+        </ul>
+
+        <h3>Level 6 - 9: Construcția Lumii</h3>
+        <ul>
+            <li>Scrierea codului pentru propriul joc</li>
+            <li>Implementarea inamicilor, a scorului și a efectelor speciale</li>
+            <li>Testare (Playtesting) și repararea „bug-urilor” (Debugging)</li>
+        </ul>
+
+        <h3>Level 10: Boss Fight & Lansarea</h3>
+        <ul>
+            <li>Bonus: Trucuri de securitate cibernetică în Python</li>
+            <li>Marea lansare! Prezentarea jocurilor către colegi</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>🚀 Înscrie-te în Program!</h2>
+        <p>
+            Ești gata să apeși pe <em>START</em>? Completează detaliile de mai jos și rezervă-ți locul în laboratorul nostru de dezvoltare.
+        </p>
+        
+        <form>
+            <label for="nume">Numele Jucătorului (Nume și Prenume)</label>
+            <input type="text" id="nume" placeholder="Ex: Alex Popescu" required>
+
+            <label for="email">Adresa de Comunicații (Email)</label>
+            <input type="email" id="email" placeholder="email@exemplu.ro" required>
+
+            <label for="clasa">Nivelul curent (Clasa)</label>
+            <input type="text" id="clasa" placeholder="Ex: Clasa a VI-a" required>
+
+            <button type="submit">SUNT PREGĂTIT - ÎNSCRIE-MĂ!</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>📡 Transmisie de Feedback</h2>
+        <p>
+            Părerea ta ne ajută să facem următorul *update* al cursului și mai bun. Acest formular are un timer intern și este disponibil doar la finalul cursului.
+        </p>
+        
+        <form>
+            <label for="ce-a-placut">Ce mecanici / activități ți-au plăcut cel mai mult?</label>
+            <textarea id="ce-a-placut" rows="3" placeholder="Scrie aici experiența ta..."></textarea>
+
+            <label for="imbunatatiri">Ce ai vrea să adăugăm într-un viitor DLC (ediție viitoare)?</label>
+            <textarea id="imbunatatiri" rows="3" placeholder="Ideile tale de îmbunătățire..."></textarea>
+
+            <button type="submit" class="btn-feedback">Trimite Transmisia</button>
+        </form>
+    </section>
+
+</div>
 
 </body>
 </html>
